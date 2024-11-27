@@ -19,20 +19,21 @@ typedef struct {
 
 int c=0;
 tache T[100];
-
+// fonctionne d'ajouter une tâche 
 void ajouter (){
     int size ;
-        if (c >= 100) { 
+        if (c >= 100) { // Vérification que la limite de tâches n'est pas atteinte
         printf("Limite maximale de transaction atteinte .\n");
         return;
     }
  
     printf("  Ajouter la  tache: \n");
     printf("  Entrer le titre de la tache :\n");
-    scanf("%s", T[c].titre);
+    scanf("%s", T[c].titre);// Lire une ligne entière pour le titre
     
     printf("  la description de la tache :\n");
-    scanf("%s",T[c].description);
+    scanf("%s",T[c].description);// Lire une ligne entière pour la description
+        // Demander à l'utilisateur de saisir la date d'échéance
     printf("  la date d'échéance:\n");
     printf(" le jour :");
     scanf("%d",&T[c].date_echeance.jour);
@@ -41,16 +42,17 @@ void ajouter (){
     printf("l'anee:");
     scanf("%d",&T[c].date_echeance.anee);
     
-       
+        // Demander à l'utilisateur de saisir la priorité de la tâche
     printf("   Définir la priorité (1:pour High/0:pour Low):\n");
     scanf("%d",&T[c].priorite);
-    c++; 
+    c++; // Incrémenter le compteur de tâches
     printf("   Tâche ajoutée \n ");
     
 };
- 
+//FONCTION D AFFFICHAGE 
+
 void afficher (){
-    if (c == 0) {
+    if (c == 0) {// Vérifier s'il y a des tâches à afficher
         printf("Aucune tâche à afficher.\n");
         return;
     }
@@ -70,7 +72,7 @@ void afficher (){
 
 
 
-
+// Fonction pour supprimer une tâche
 void supprimer(){
     int s;
     printf("Entrez le numéro de la tâche que vous souhaitez supprimer : ");
@@ -83,7 +85,7 @@ void supprimer(){
     }
     c--;
 }
-
+// Fonction pour  mettre_a_jour une tâche
     void   mettre_a_jour() {
     int M;
     printf("Entrez le numéro de la tâche à mettre à jour : ");
@@ -117,7 +119,7 @@ void supprimer(){
 
     printf("Tâche mise à jour avec succès !\n");
 }
-
+// Fonction pour filtrer_par_priorite une tâche
 void filtrer_par_priorite() {
     int priorite_filter;
    
@@ -133,9 +135,9 @@ void filtrer_par_priorite() {
             printf("Description : %s\n", T[i].description);
             printf("Date d'échéance : %02d/%02d/%04d\n \n", T[i].date_echeance.jour, T[i].date_echeance.moi, T[i].date_echeance.anee);
             if (T[i].priorite == 1) {
-    printf("Priorité : High\n "); 
+    printf("Priorité : High\n "); // Priorite high
 } else if (T[i].priorite == 0) {
-    printf("Priorité : Low\n"); 
+    printf("Priorité : Low\n"); // Priorit low
 }
            
         }
@@ -156,28 +158,28 @@ int main(){
         printf("votre choix:\n");
         scanf("%d",&choix);
         switch(choix){
-            case 1 :    
-            printf("vous avez choisi le choix d'ajout. \n");
+            case 1 :    // Gestion des choix de l'utilisateur via un switch
+            printf("vous avez choisi le choix d'ajout. \n");// Ajouter une tâche
             ajouter ();
             break; 
             
             case 2 :
-            printf("vous avez choisi le choix d'affichage. \n"); 
+            printf("vous avez choisi le choix d'affichage. \n"); // Afficher les tâcher
             afficher ();
             break;
             case 3:
-            printf("vous avez choisi le chiox de mettre a jour .\n"); 
-        
+            printf("vous avez choisi le chiox de mettre a jour .\n"); // Mettre à jour une tâche
             mettre_a_jour();
               break;
             case 4:
-             printf("vous avez choisi le choix de supprimer. \n");   
+             printf("vous avez choisi le choix de supprimer. \n");   // Supprimer une tâche
              supprimer();
              break;
             case 5:
-            printf("vous avez choisi le choix de filtrer. \n");  
+            printf("vous avez choisi le choix de filtrer. \n");  // Filtrer les tâches par priorité
             filtrer_par_priorite();
         }
     }
-while(choix < 6 ); 
+while(choix < 6 ); // La boucle continue jusqu'à ce que l'utilisateur choisisse de quitter
 return 0;
+}
